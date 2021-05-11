@@ -1,27 +1,16 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, View, StyleSheet } from 'react-native';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
-//import { CABECERAS } from '../comun/cabeceras';
 import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
       excursiones: state.excursiones,
-      actividades: state.actividades,
-      cabeceras: state.cabeceras
+      cabeceras: state.cabeceras,
+      actividades: state.actividades
     }
   }
-
-const styles = StyleSheet.create({
-    title: {
-      color: 'chocolate',
-      textAlign: "center",
-      fontSize: 30,
-      fontWeight: "bold",
-      backgroundColor: "#00FFFF00"
-    }
-  });
 
 function RenderItem(props) {
     
@@ -30,11 +19,8 @@ function RenderItem(props) {
         if (item != null) {
             return(
                 <Card>
-                    
-                    <Card.Divider/>
-                    
-                    <Card.Image source={{uri: baseUrl + item.imagen}}>
-                    <   Card.Title style={styles.title}>{item.nombre}</Card.Title>
+                    <Card.Image source = {{ uri: baseUrl + item.imagen }}>
+                        <Card.Title style={styles.cardTitleStyle}>{item.nombre}</Card.Title>
                     </Card.Image>
                     <Text style={{margin: 20}}>
                         {item.descripcion}
@@ -49,7 +35,6 @@ function RenderItem(props) {
 
 class Home extends Component {
 
-
     render() {
         
         return(
@@ -62,4 +47,15 @@ class Home extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+const styles = StyleSheet.create({
+    cardTitleStyle: {
+      color: 'chocolate',
+      fontWeight: 'bold',
+      fontSize: 30,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 50,
+    },
+  });
+
+  export default connect(mapStateToProps)(Home);
