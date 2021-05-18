@@ -5,6 +5,7 @@ import DetalleExcursion from './DetalleExcursionComponent';
 import Home from './HomeComponent';
 import QuienesSomos from './QuienesSomosComponent';
 import Contacto from './ContactoComponent';
+import ExcursionesFavoritas from './VistaFavoritosComponent';
 import { View, StyleSheet, Image, Text } from 'react-native';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -157,6 +158,29 @@ function PruebaEsfuerzoNavegador({ navigation }) {
   );
 }
 
+function ExcursionesFavoritasNavegador({ navigation }) {
+  return (
+    <Stack.Navigator
+      initialRouteName="ExcursionesFavoritas"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
+        headerTitleStyle: { color: '#fff' },
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
+      }}
+    >
+      <Stack.Screen
+        name="ExcursionesFavoritas"
+        component={ExcursionesFavoritas}
+        options={{
+          title: 'ExcursionesFavoritas',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
@@ -226,11 +250,23 @@ function DrawerNavegador() {
               <Icon
               name='address-card'
               type='font-awesome'            
-              size={22}
+              size={24}
               color={tintColor}
               />
             )
             }}
+        />
+        <Drawer.Screen name="Excursiones favoritas" component={ExcursionesFavoritasNavegador}
+          options={{
+            drawerIcon: ({ tintColor }) => (
+              <Icon
+                name='thumbs-up'
+                type='font-awesome'
+                size={24}
+                color={tintColor}
+              />
+            )
+          }}
         />
         <Drawer.Screen name="PruebaEsfuerzo" component={PruebaEsfuerzoNavegador}
           options={{
