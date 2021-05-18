@@ -3,6 +3,7 @@ import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
 import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
+import { IndicadorActividad } from './IndicadorActividadComponent'
 
 const mapStateToProps = state => {
     return {
@@ -12,8 +13,26 @@ const mapStateToProps = state => {
     }
   }
 
-function RenderItem(props) {
+  function RenderItem(props) {
+ 
+    const item = props.item;
+        
+    if (props.isLoading) {
+        return(
+            <IndicadorActividad />
+        );
+    }
+
+    else if (props.errMess) {
+        return(
+            <View> 
+                <Text>{props.errMess}</Text>
+            </View>
+        );
+    }
     
+    else { 
+
         const item = props.item;
         
         if (item != null) {
@@ -25,13 +44,15 @@ function RenderItem(props) {
                     <Text style={{margin: 20}}>
                         {item.descripcion}
                     </Text>
-                </Card>
+                    </Card>
             );
         }
         else {
             return(<View></View>);
         }
+    }
 }
+
 
 class Home extends Component {
 
@@ -40,7 +61,10 @@ class Home extends Component {
         return(
             <ScrollView>
                 <RenderItem item={this.props.cabeceras.cabeceras.filter((cabecera) => cabecera.destacado)[0]} />
-                <RenderItem item={this.props.excursiones.excursiones.filter((excursion) => excursion.destacado)[0]} />
+                <RenderItem item={this.props.excursiones.excursiones.filter((excursion) => excursion.destacado)[0]}
+                    isLoading={this.props.excursiones.isLoading}
+                    errMess={this.props.excursiones.errMess}                
+                />
                 <RenderItem item={this.props.actividades.actividades.filter((actividad) => actividad.destacado)[0]} />
             </ScrollView>
         );
