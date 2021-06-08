@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { FlatList, View, Alert } from 'react-native';
+import { FlatList, View, Alert, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
-import { baseUrl } from '../comun/comun';
+//import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
 import Swipeout from 'react-native-swipeout';
 import IndicadorActividad from './IndicadorActividadComponent';
@@ -61,7 +61,7 @@ class VistaFavoritos extends Component {
                         onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
                         onLongPress={() => this.alertaBorrar(item)}
                         bottomDivider>
-                        <Avatar source={{uri: baseUrl + item.imagen}} />
+                        <Avatar source={{uri: item.imagen}} />
                         <ListItem.Content>
                             <ListItem.Title>{item.nombre}</ListItem.Title>
                             <ListItem.Subtitle>{item.descripcion}</ListItem.Subtitle>
