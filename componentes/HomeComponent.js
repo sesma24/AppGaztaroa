@@ -38,7 +38,7 @@ const mapStateToProps = state => {
         if (item != null) {
             return(
                 <Card>
-                    <Card.Image source = {{ uri: item.image }}>
+                    <Card.Image source = {{ uri: item.imagen }}>
                         <Card.Title style={styles.cardTitleStyle}>{item.nombre}</Card.Title>
                     </Card.Image>
                     <Text style={{margin: 20}}>
