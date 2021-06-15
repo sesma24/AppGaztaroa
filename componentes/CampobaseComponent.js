@@ -17,13 +17,17 @@ import { connect } from 'react-redux';
 import { fetchExcursiones, fetchComentarios, fetchCabeceras, fetchActividades } from '../redux/ActionCreators';
 import PruebaEsfuerzo from './PruebaEsfuerzoComponent';
 import firebase from 'firebase';
+import LoginScreen from './LoginScreen';
+import SignUpScreen from './SignUpScreen';
+
 
 const mapStateToProps = state => {
   return {
     excursiones: state.excursiones,
     comentarios: state.comentarios,
     cabeceras: state.cabeceras,
-    actividades: state.actividades
+    actividades: state.actividades,
+    login: state.login
   }
 }
 
@@ -206,9 +210,21 @@ function DrawerNavegador() {
       drawerStyle={{
         backgroundColor: colorGaztaroaClaro,
       }}
-      initialRouteName="Home"
+      initialRouteName="Campo base"
       drawerContent={props => <CustomDrawerContent {...props} />}
       >
+        <Drawer.Screen name="Login" component={LoginNavegador}
+          options={{
+            drawerIcon: ({ tintColor }) => (
+              <Icon
+                name='user'
+                type='font-awesome'
+                size={24}
+                color={tintColor}
+              />
+            )
+          }}
+        />
         <Drawer.Screen name="Campo base" component={HomeNavegador}
           options={{
             drawerIcon: ({ tintColor}) => (
@@ -282,6 +298,32 @@ function DrawerNavegador() {
             }}
         />      
       </Drawer.Navigator>
+  );
+}
+
+
+function LoginNavegador() {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          title: 'Login',
+        }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{
+          title: 'SignUp',
+        }}
+      />
+      <Stack.Screen
+        name="Inicio"
+        component={DrawerNavegador}
+      />
+    </Stack.Navigator>
   );
 }
 

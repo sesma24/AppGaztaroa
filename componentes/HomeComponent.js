@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
-//import { baseUrl, obtenerImagen } from '../comun/comun';
 import { connect } from 'react-redux';
 import { IndicadorActividad } from './IndicadorActividadComponent'
 
@@ -9,7 +8,8 @@ const mapStateToProps = state => {
     return {
       excursiones: state.excursiones,
       cabeceras: state.cabeceras,
-      actividades: state.actividades
+      actividades: state.actividades,
+      login: state.login
     }
   }
 
@@ -60,6 +60,7 @@ class Home extends Component {
         
         return(
             <ScrollView>
+                <Text>{this.props.user}</Text>
                 <RenderItem item={this.props.cabeceras.cabeceras.filter((cabecera) => cabecera.destacado)[0]} />
                 <RenderItem item={this.props.excursiones.excursiones.filter((excursion) => excursion.destacado)[0]}
                     isLoading={this.props.excursiones.isLoading}

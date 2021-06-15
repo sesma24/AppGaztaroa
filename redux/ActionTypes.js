@@ -14,3 +14,5 @@ export const ADD_FAVORITO = 'ADD_FAVORITO';
 export const POST_COMENTARIO = 'POST_COMENTARIO';
 export const ADD_COMENTARIO = 'ADD_COMENTARIO';
 export const BORRAR_FAVORITO = 'BORRAR_FAVORITO'; 
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';  

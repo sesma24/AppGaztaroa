@@ -8,6 +8,7 @@ import { actividades } from './actividades';
 import { favoritos } from './favoritos';
 import { persistStore, persistReducer } from 'redux-persist'
 import { AsyncStorage } from 'react-native';
+import { login } from './Login';
 
 const persistConfig = {
     key: 'root',
@@ -22,7 +23,8 @@ const persistedReducer = persistReducer(
         comentarios,
         cabeceras,
         actividades,
-        favoritos
+        favoritos,
+        login
     }))
 
 export const ConfigureStore = () => {

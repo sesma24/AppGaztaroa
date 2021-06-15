@@ -171,3 +171,13 @@ export const addComentario = (excursionId, valoracion, autor, comentario, dia) =
     type: ActionTypes.ADD_COMENTARIO,
     payload: { "autor": autor, "comentario": comentario, "dia": dia, "excursionId": excursionId, "id": "id", "valoracion": valoracion }
 }); 
+
+export const logIn = (email) => ({
+    type: ActionTypes.LOGIN,
+    payload: email
+});
+
+
+export const logOut = () => ({
+    type: ActionTypes.DEL_AUTH
+});

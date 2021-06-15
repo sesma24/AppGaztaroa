@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, View, Alert, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
-//import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
 import Swipeout from 'react-native-swipeout';
 import IndicadorActividad from './IndicadorActividadComponent';
