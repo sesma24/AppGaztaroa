@@ -25,7 +25,7 @@ class VistaFavoritos extends Component {
     alertaBorrar(item) {
         Alert.alert(
             "¿Esta seguro que desea borrar la excursión?",
-            "Borrar " + item.nombre + "de la lista",
+            "Borrar " + item.nombre + " de la lista",
             [
                 {
                     text: "Cancelar",

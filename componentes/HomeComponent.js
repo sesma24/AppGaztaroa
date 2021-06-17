@@ -57,10 +57,10 @@ const mapStateToProps = state => {
 class Home extends Component {
 
     render() {
-        
+  
         return(
             <ScrollView>
-                <Text>{this.props.user}</Text>
+                <Text>Bienvenido {this.props.login.user}</Text>
                 <RenderItem item={this.props.cabeceras.cabeceras.filter((cabecera) => cabecera.destacado)[0]} />
                 <RenderItem item={this.props.excursiones.excursiones.filter((excursion) => excursion.destacado)[0]}
                     isLoading={this.props.excursiones.isLoading}

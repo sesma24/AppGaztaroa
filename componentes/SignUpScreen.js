@@ -108,38 +108,38 @@ class SignUpScreen extends Component {
     return (
       <View style={styles.contianer}>
         <View style={styles.headerView}>
-          <Text style={styles.header}>Sign Up</Text>
+          <Text style={styles.header}>Registrarse</Text>
         </View>
         <TextInput
           placeholder="Email"
           autoCapitalize="none"
           value={this.state.email}
           onChangeText={val => this.updateInputState("email", val)}
-          underlineColorAndroid="#1E90FF"
+          underlineColorAndroid="#22027A"
           style={styles.input}
         />
         <TextInput
-          placeholder="Password"
+          placeholder="Contraseña"
           autoCapitalize="none"
           value={this.state.password.val}
           onChangeText={val => this.updateInputState("password", val)}
-          underlineColorAndroid="#1E90FF"
+          underlineColorAndroid="#22027A"
           style={styles.input}
           secureTextEntry
         />
         <TextInput
-          placeholder="Confirm password"
+          placeholder="Confirmar contraseña"
           autoCapitalize="none"
           value={this.state.confirmPassword.val}
           onChangeText={val => this.updateInputState("confirmPassword", val)}
-          underlineColorAndroid="#1E90FF"
+          underlineColorAndroid="#22027A"
           style={styles.input}
           secureTextEntry
         />
         <View style={styles.button} >
-          <Button title="SignUp" onPress={() => this.signupHandler({ navigate })} disabled={(this.state.email === "" || !this.state.confirmPassword.valid)} />
+          <Button title="Registrarse" onPress={() => this.signupHandler({ navigate })} disabled={(this.state.email === "" || !this.state.confirmPassword.valid)} />
         </View>
-        <Text style={styles.text}>Already have an account? <Text onPress={() => navigate('Login')} style={styles.navigateText}>Login</Text></Text>
+        <Text style={styles.text}>¿Ya tienes una cuenta? <Text onPress={() => navigate('Login')} style={styles.navigateText}>Iniciar sesión</Text></Text>
       </View>
     )
   }
@@ -151,25 +151,25 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   headerView: {
-    marginBottom: 25
+    marginBottom: 50
   },
   header: {
     fontWeight: "bold",
-    fontSize: 26,
-    color: "#1E90FF"
+    fontSize: 50,
+    color: "#22027A"
   },
   text: {
     color: "black"
   },
   navigateText: {
-    color: "#1E90FF"
+    color: "#22027A"
   },
   input: {
-    width: "70%"
+    width: "90%"
   },
   button: {
-    marginTop: 15,
-    marginBottom: 15
+    marginTop: 25,
+    marginBottom: 25
   }
 });
 

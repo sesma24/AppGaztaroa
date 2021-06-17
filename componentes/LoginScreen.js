@@ -41,7 +41,7 @@ class LoginScreen extends Component {
         }
     };
 
-     // Hay que pasar la variable navigate para permitir la navegacion entre pantallas, la forma de la documentacion no funcionaba en mi caso
+    
     loginHandler = ({navigate}) => {
         const apiKey = "AIzaSyA3wFC2eHwQ-fj8GI-bx4D5sSeHUa9PbEw";
         let url = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" + apiKey;
@@ -57,18 +57,16 @@ class LoginScreen extends Component {
             }
         })
             .catch(err => {
-                //console.log(err);
                 alert(err);
             })
             .then(res => res.json())
             .then(parsedRes => {
-                //console.log(parsedRes);
                 if (!parsedRes.idToken) {
                     alert(parsedRes.error.message);
                 } else {
-                    //console.log( this.state.email);
                     this.props.logIn(this.state.email)
-                    navigate('Inicio'/*, { user: this.state.email }*/)
+                    navigate('Inicio', { user: this.state.email })
+                    
                 }
             });
     };
@@ -77,29 +75,29 @@ class LoginScreen extends Component {
         return (
             <View style={styles.contianer}>
                 <View style={styles.headerView}>
-                    <Text style={styles.header}>Login</Text>
+                    <Text style={styles.header}>Iniciar sesión</Text>
                 </View>
                 <TextInput
                     placeholder="Email"
                     autoCapitalize="none"
                     value={this.state.email}
                     onChangeText={val => this.updateInputState("email", val)}
-                    underlineColorAndroid="#1E90FF"
+                    underlineColorAndroid="#1E22027A"
                     style={styles.input}
                 />
                 <TextInput
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     autoCapitalize="none"
                     value={this.state.password}
                     onChangeText={val => this.updateInputState("password", val)}
-                    underlineColorAndroid="#1E90FF"
+                    underlineColorAndroid="#22027A"
                     style={styles.input}
                     secureTextEntry
                 />
                 <View style={styles.button}>
-                    <Button title="Login" onPress={() => this.loginHandler({navigate})} style={styles.button} disabled={(this.state.email === "" || this.state.password === "")} />
+                    <Button title="Entrar" onPress={() => this.loginHandler({navigate})} style={styles.button} disabled={(this.state.email === "" || this.state.password === "")} />
                 </View>
-                <Text style={styles.text}>Don't have an account? <Text onPress={() => navigate('SignUp')} style={styles.navigateText}>Sign Up</Text></Text>
+                <Text style={styles.text}>¿No tienes una cuenta? <Text onPress={() => navigate('SignUp')} style={styles.navigateText}>Registrarse</Text></Text>
             </View>
         )
     }
@@ -111,25 +109,25 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     headerView: {
-        marginBottom: 20
+        marginBottom: 50
     },
     header: {
         fontWeight: "bold",
-        fontSize: 26,
-        color: "#1E90FF"
+        fontSize: 50,
+        color: "#22027A"
     },
     text: {
         color: "black"
     },
     navigateText: {
-        color: "#1E90FF"
+        color: "#22027A"
     },
     input: {
-        width: "70%"
+        width: "90%"
     },
     button: {
-        marginTop: 15,
-        marginBottom: 15
+        marginTop: 25,
+        marginBottom: 25
     }
 });
 

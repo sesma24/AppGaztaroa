@@ -9,7 +9,8 @@ const mapStateToProps = state => {
     return {
       excursiones: state.excursiones,
       comentarios: state.comentarios,
-      favoritos: state.favoritos
+      favoritos: state.favoritos,
+      login: state.login
     }
 }
 
@@ -154,15 +155,14 @@ class DetalleExcursion extends Component {
                     />
                     <Input
                       placeholder="Autor"
+                      value= {this.props.login.user}
                       leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                       onChangeText={value => this.setState({ autor: value })}
-                      //onChangeText={value => this.setState({ comment: value })}
                     />
                     <Input
                       placeholder="Comentario"
                       leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
                       onChangeText={value => this.setState({ comentario: value })}
-                      //onChangeText={value => this.setState({ comment: value })}
                     />
                     
                     <View>
